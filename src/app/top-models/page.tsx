@@ -36,6 +36,10 @@ export default async function Page() {
         sql`ROUND(SUM(CASE WHEN ${apps.didWin} = true THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 0)`
           .mapWith(Number)
           .as("win_percentage"),
+      multiCallPercentage:
+        sql`ROUND(SUM(CASE WHEN ${apps.isMultiCall} = true THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 0)`
+          .mapWith(Number)
+          .as("multi_call_percentage"),
     })
     .from(apps)
     .groupBy(apps.model)
@@ -82,22 +86,12 @@ export default async function Page() {
           <Table className="border border-gray-400 shadow-lg">
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[10%]"></TableHead>
-                <TableHead className="w-[40%] whitespace-nowrap text-xs text-gray-500">
-                  Model
-                </TableHead>
-                <TableHead className="whitespace-nowrap text-center text-xs text-gray-500">
-                  Organization
-                </TableHead>
-                <TableHead className="whitespace-nowrap text-center text-xs text-gray-500">
-                  Total games
-                </TableHead>
-                <TableHead className="whitespace-nowrap text-xs text-gray-500">
-                  Win %
-                </TableHead>
-                <TableHead className="whitespace-nowrap text-xs text-gray-500">
-                  Playground
-                </TableHead>
+                <TableHead>Rank</TableHead>
+                <TableHead>Model</TableHead>
+                <TableHead>Win Rate</TableHead>
+                <TableHead>Multi-Call</TableHead>
+                <TableHead>Games</TableHead>
+                <TableHead>Link</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -122,6 +116,7 @@ function ResultRow({
     losses: number;
     games: number;
     winPercentage: number;
+    multiCallPercentage: number;
   };
   index: number;
 }) {
@@ -141,13 +136,9 @@ function ResultRow({
         />
         {model.shortLabel}
       </TableCell>
-      <TableCell className="text-center">
-        {models.find((m) => m.apiName === result.model)?.organization}
-      </TableCell>
-      <TableCell className="text-center">{result.games}</TableCell>
-      <TableCell className="font-medium text-gray-900">
-        {result.winPercentage}%
-      </TableCell>
+      <TableCell className="text-right">{result.winPercentage}%</TableCell>
+      <TableCell className="text-right">{result.multiCallPercentage}%</TableCell>
+      <TableCell className="text-right">{result.games}</TableCell>
       <TableCell>
         <Button asChild className="mx-auto flex size-6 p-0">
           <Link
@@ -172,6 +163,7 @@ function ResultCard({
     losses: number;
     games: number;
     winPercentage: number;
+    multiCallPercentage: number;
   };
   index: number;
 }) {
@@ -208,6 +200,12 @@ function ResultCard({
             <p className="text-xs">Win %:</p>
             <p className="font-title text-sm text-gray-900">
               <strong>{result.winPercentage}%</strong>
+            </p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-xs">Multi-Call %:</p>
+            <p className="font-title text-sm text-gray-900">
+              <strong>{result.multiCallPercentage}%</strong>
             </p>
           </div>
 
