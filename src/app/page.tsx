@@ -4,6 +4,7 @@ import RibbonIcon from "@/components/icons/ribbon";
 import SwordsIcon from "@/components/icons/swords";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ModelDropdown } from "@/components/ui/model-dropdown";
 import modelBackgroundImage from "@/public/model-background.png";
 import { Battle } from "@/schema";
 import {
@@ -51,6 +52,7 @@ export default function Home() {
   const [appB, setAppB] = useState<App>();
   const [selectedTabA, setSelectedTabA] = useState("code");
   const [selectedTabB, setSelectedTabB] = useState("code");
+  const [testModel, setTestModel] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -219,19 +221,17 @@ export default function Home() {
 
       <form onSubmit={handleSubmit} className="mx-auto mt-4 max-w-2xl md:mt-8">
         <fieldset disabled={status === "generating"}>
-          {/* <div>
-            <select
+          {/* Model selection dropdown with icons */}
+          <div className="mx-auto mb-4 max-w-lg">
+            <ModelDropdown
               name="testModel"
-              className="border border-gray-300 px-0.5 py-1"
-            >
-              <option value="">Compare random models</option>
-              {models.map((model) => (
-                <option key={model.apiName} value={model.apiName}>
-                  {model.label}
-                </option>
-              ))}
-            </select>
-          </div> */}
+              value={testModel}
+              onChange={setTestModel}
+              disabled={status === "generating"}
+              placeholder="Compare random models (or select a specific one)"
+              className="w-full"
+            />
+          </div>
 
           <div className="relative mx-auto max-w-lg">
             <input
@@ -349,9 +349,16 @@ function Result({
     <div>
       <Tabs value={selectedTab} onValueChange={onTabSelect}>
         <div className="relative flex items-center">
-          <p className="absolute truncate text-center text-gray-900 lg:w-full">
-            {placeholder}
-          </p>
+          <div className="absolute flex items-center gap-2 truncate text-center text-gray-900 lg:w-full lg:justify-center">
+            <Image
+              src={app.model.logo}
+              alt={app.model.label}
+              className="h-4 w-4 object-contain"
+              width={16}
+              height={16}
+            />
+            <span>{app.model.shortLabel}</span>
+          </div>
           <TabsList className="relative ml-auto h-auto bg-white p-0">
             <TabsTrigger
               className="border border-r-0 border-gray-500 data-[state=active]:border-black data-[state=active]:bg-black data-[state=active]:text-white"
