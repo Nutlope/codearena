@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Selection with Validation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Model Selection</h1>
+            <p>Select two different models to compare their performance</p>
+        </header>
+
+        <form id="modelForm" class="model-form">
+            <div class="model-section">
+                <div class="dropdown-container">
+                    <label for="model1" class="dropdown-label">
+                        <span class="label-text">Model A</span>
+                        <span class="required">*</span>
+                    </label>
+                    <div class="dropdown-wrapper">
+                        <select id="model1" name="model1" class="model-dropdown">
+                            <option value="">Select Model A...</option>
+                            <option value="gpt-4">GPT-4</option>
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            <option value="claude-3-opus">Claude 3 Opus</option>
+                            <option value="claude-3-sonnet">Claude 3 Sonnet</option>
+                            <option value="claude-3-haiku">Claude 3 Haiku</option>
+                            <option value="gemini-pro">Gemini Pro</option>
+                            <option value="llama-2-70b">Llama 2 70B</option>
+                            <option value="mistral-large">Mistral Large</option>
+                        </select>
+                        <div class="validation-icon" id="model1-icon"></div>
+                    </div>
+                    <div class="error-message" id="model1-error"></div>
+                </div>
+
+                <div class="dropdown-container">
+                    <label for="model2" class="dropdown-label">
+                        <span class="label-text">Model B</span>
+                        <span class="required">*</span>
+                    </label>
+                    <div class="dropdown-wrapper">
+                        <select id="model2" name="model2" class="model-dropdown">
+                            <option value="">Select Model B...</option>
+                            <option value="gpt-4">GPT-4</option>
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            <option value="claude-3-opus">Claude 3 Opus</option>
+                            <option value="claude-3-sonnet">Claude 3 Sonnet</option>
+                            <option value="claude-3-haiku">Claude 3 Haiku</option>
+                            <option value="gemini-pro">Gemini Pro</option>
+                            <option value="llama-2-70b">Llama 2 70B</option>
+                            <option value="mistral-large">Mistral Large</option>
+                        </select>
+                        <div class="validation-icon" id="model2-icon"></div>
+                    </div>
+                    <div class="error-message" id="model2-error"></div>
+                </div>
+            </div>
+
+            <div class="form-summary" id="formSummary">
+                <div class="summary-content">
+                    <h3>Selection Summary</h3>
+                    <div class="selected-models">
+                        <div class="model-display" id="selectedModel1">
+                            <span class="model-label">Model A:</span>
+                            <span class="model-value">Not selected</span>
+                        </div>
+                        <div class="model-display" id="selectedModel2">
+                            <span class="model-label">Model B:</span>
+                            <span class="model-value">Not selected</span>
+                        </div>
+                    </div>
+                    <div class="validation-status" id="validationStatus">
+                        <span class="status-text">Please select two different models</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="validateBtn" class="btn btn-secondary">
+                    Validate Selection
+                </button>
+                <button type="submit" id="submitBtn" class="btn btn-primary" disabled>
+                    Compare Models
+                </button>
+                <button type="button" id="resetBtn" class="btn btn-outline">
+                    Reset Selection
+                </button>
+            </div>
+        </form>
+
+        <div class="validation-rules">
+            <h3>Validation Rules</h3>
+            <ul>
+                <li class="rule" id="rule1">
+                    <span class="rule-icon">⚪</span>
+                    Both models must be selected
+                </li>
+                <li class="rule" id="rule2">
+                    <span class="rule-icon">⚪</span>
+                    Models must be different from each other
+                </li>
+                <li class="rule" id="rule3">
+                    <span class="rule-icon">⚪</span>
+                    Selection is valid and ready for comparison
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="validation.js"></script>
+</body>
+</html>

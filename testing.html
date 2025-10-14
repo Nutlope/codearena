@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Selection Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+        }
+        
+        .test-case {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .test-case h4 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        
+        .test-steps {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+        
+        .expected-result {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .validation-checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .validation-checklist {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .demo-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .demo-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Model Selection Validation - Testing Guide</h1>
+        <p>This page provides comprehensive testing scenarios for the model selection dropdowns with validation rules.</p>
+        
+        <a href="index.html" class="demo-link">🚀 Open Live Demo</a>
+    </div>
+
+    <div class="test-container">
+        <div class="test-section">
+            <h2>📋 Testing Checklist</h2>
+            <p>Complete these manual tests to verify all functionality works correctly:</p>
+            
+            <div class="validation-checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="test1">
+                    <label for="test1">Page loads without errors</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test2">
+                    <label for="test2">Both dropdowns show all model options</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test3">
+                    <label for="test3">Submit button is initially disabled</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test4">
+                    <label for="test4">Validation rules show pending state</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test5">
+                    <label for="test5">Real-time validation works on selection</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test6">
+                    <label for="test6">Error messages display correctly</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test7">
+                    <label for="test7">Success state enables submit button</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test8">
+                    <label for="test8">Reset button clears all selections</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test9">
+                    <label for="test9">Form submission works with validation</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="test10">
+                    <label for="test10">Responsive design works on mobile</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <div class="test-section">
+            <h2>🔍 Detailed Test Cases</h2>
+            
+            <div class="test-case">
+                <h4>Test Case 1: Empty Selection Validation</h4>
+                <ol class="test-steps">
+                    <li>Load the page</li>
+                    <li>Click "Validate Selection" button</li>
+                    <li>Try to submit the form</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> Error messages should appear under both dropdowns indicating they are required. Submit button should remain disabled. Validation rules should show pending/invalid states.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 2: Same Model Selection</h4>
+                <ol class="test-steps">
+                    <li>Select "GPT-4" in Model A dropdown</li>
+                    <li>Select "GPT-4" in Model B dropdown</li>
+                    <li>Observe validation feedback</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> Both dropdowns should show red border and error icon. Error message should indicate models cannot be the same. Submit button should be disabled.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 3: Valid Different Selection</h4>
+                <ol class="test-steps">
+                    <li>Select "GPT-4" in Model A dropdown</li>
+                    <li>Select "Claude 3 Opus" in Model B dropdown</li>
+                    <li>Observe validation feedback</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> Both dropdowns should show green border and checkmark icon. Validation status should show success message. Submit button should be enabled. All validation rules should show green checkmarks.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 4: Real-time Validation</h4>
+                <ol class="test-steps">
+                    <li>Select "GPT-4" in Model A</li>
+                    <li>Select "Claude 3 Opus" in Model B (valid state)</li>
+                    <li>Change Model B to "GPT-4" (invalid state)</li>
+                    <li>Change Model B back to "Claude 3 Opus" (valid again)</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> Validation should update immediately on each change without clicking any buttons. Visual indicators should change in real-time.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 5: Form Submission</h4>
+                <ol class="test-steps">
+                    <li>Set up a valid selection (different models)</li>
+                    <li>Click "Compare Models" button</li>
+                    <li>Try submitting invalid form (same models or empty)</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> Valid submission should show success alert with model names. Invalid submission should show validation errors and form shake animation.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 6: Reset Functionality</h4>
+                <ol class="test-steps">
+                    <li>Make any selections in both dropdowns</li>
+                    <li>Click "Reset Selection" button</li>
+                    <li>Verify all fields are cleared</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> All dropdowns reset to "Select..." state. All validation states reset. Form shows shake animation. Summary section shows "Not selected" for both models.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 7: Responsive Design</h4>
+                <ol class="test-steps">
+                    <li>Resize browser window to mobile size (&lt; 768px width)</li>
+                    <li>Test all functionality on mobile layout</li>
+                    <li>Verify dropdowns are usable on touch devices</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> Layout should stack vertically on mobile. All functionality should work the same. Buttons should be full-width for better touch interaction.
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h4>Test Case 8: Accessibility</h4>
+                <ol class="test-steps">
+                    <li>Navigate using only keyboard (Tab, Enter, Arrow keys)</li>
+                    <li>Test with screen reader if available</li>
+                    <li>Verify focus indicators are visible</li>
+                </ol>
+                <div class="expected-result">
+                    <strong>Expected:</strong> All interactive elements should be keyboard accessible. Focus indicators should be clearly visible. Labels should be properly associated with form controls.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <div class="test-section">
+            <h2>🎯 Key Features to Verify</h2>
+            <ul>
+                <li><strong>Validation Rules:</strong>
+                    <ul>
+                        <li>Both dropdowns must have a selection (not empty)</li>
+                        <li>Selected models must be different</li>
+                        <li>Form only submits when both rules are satisfied</li>
+                    </ul>
+                </li>
+                <li><strong>User Experience:</strong>
+                    <ul>
+                        <li>Real-time validation feedback as user types/selects</li>
+                        <li>Clear error messages and visual indicators</li>
+                        <li>Success states with green checkmarks</li>
+                        <li>Summary section showing current selections</li>
+                        <li>Animated feedback (shake on reset/error)</li>
+                    </ul>
+                </li>
+                <li><strong>Technical Implementation:</strong>
+                    <ul>
+                        <li>No JavaScript errors in console</li>
+                        <li>Form prevents submission when invalid</li>
+                        <li>Proper event handling for all interactions</li>
+                        <li>Clean state management and UI updates</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Simple test completion tracking
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const totalTests = checkboxes.length;
+        
+        function updateProgress() {
+            const completed = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const percentage = Math.round((completed / totalTests) * 100);
+            document.title = `Model Selection Testing (${completed}/${totalTests} - ${percentage}%)`;
+        }
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateProgress);
+        });
+        
+        updateProgress();
+        
+        // Add link to live demo functionality
+        console.log('Testing guide loaded. Available test cases:', totalTests);
+    </script>
+</body>
+</html>
