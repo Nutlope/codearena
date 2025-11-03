@@ -33,13 +33,6 @@ export const models = [
     apiName: "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
   },
   {
-    label: "Qwen 2.5 Coder 32B Instruct",
-    shortLabel: "Qwen 2.5 Coder 32B",
-    organization: "Qwen",
-    logo: QwenLogo,
-    apiName: "Qwen/Qwen2.5-Coder-32B-Instruct",
-  },
-  {
     label: "Qwen 3 Coder 480B",
     shortLabel: "Qwen 3 Coder",
     organization: "Qwen",
