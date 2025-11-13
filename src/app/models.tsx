@@ -9,7 +9,7 @@ export const models = [
     shortLabel: "Kimi K2",
     organization: "Moonshot",
     logo: MoonshotLogo,
-    apiName: "moonshotai/Kimi-K2-Instruct",
+    apiName: "moonshotai/Kimi-K2-Instruct-0905",
   },
   {
     label: "DeepSeek V3",
