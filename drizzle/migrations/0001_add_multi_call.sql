@@ -1,0 +1,1 @@
+ALTER TABLE apps ADD COLUMN is_multi_call BOOLEAN NOT NULL DEFAULT false;
