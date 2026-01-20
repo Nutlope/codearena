@@ -10,6 +10,7 @@ type App = {
   trimmedCode: string;
   completionTokens: number;
   totalTime: number;
+  isMultiCall?: boolean;
 };
 
 export default async function saveBattle({
@@ -42,6 +43,7 @@ export default async function saveBattle({
       completionTokens: winner.completionTokens,
       totalTime: winner.totalTime,
       didWin: true,
+      isMultiCall: winner.isMultiCall ?? false,
     });
   }
 
@@ -54,6 +56,7 @@ export default async function saveBattle({
       completionTokens: loser.completionTokens,
       totalTime: loser.totalTime,
       didWin: false,
+      isMultiCall: loser.isMultiCall ?? false,
     });
   }
 

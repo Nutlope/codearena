@@ -49,6 +49,7 @@ export const apps = pgTable(
     code: text("code").notNull(),
     trimmedCode: text("trimmed_code").notNull(),
     totalTime: integer("total_time"),
+    isMultiCall: boolean("is_multi_call").notNull().default(false),
     completionTokens: integer("completion_tokens"),
     ...timestamps,
   },
